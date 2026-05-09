@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["model_id", "template", "data_as_of", "confidence", "scenarios", "steps", "sources"],
+  "properties": {
+    "model_id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "template": {
+      "type": "string",
+      "enum": [
+        "accelerator_supply_chain",
+        "advanced_packaging_capacity",
+        "hbm_memory_content",
+        "ai_server_bom",
+        "networking_bandwidth",
+        "optical_interconnect",
+        "storage_capacity",
+        "power_equipment_capacity",
+        "liquid_cooling_penetration",
+        "grid_energy_demand",
+        "cloud_gpu_utilization",
+        "software_usage_or_seat",
+        "custom_steps"
+      ]
+    },
+    "data_as_of": { "type": "string", "minLength": 4 },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high"] },
+    "scenarios": {
+      "type": "object",
+      "required": ["bear", "base", "bull"],
+      "properties": {
+        "bear": { "$ref": "#/$defs/scenario" },
+        "base": { "$ref": "#/$defs/scenario" },
+        "bull": { "$ref": "#/$defs/scenario" }
+      },
+      "additionalProperties": false
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["label", "value_key", "explain"],
+        "properties": {
+          "label": { "type": "string", "minLength": 1 },
+          "value_key": { "type": "string", "minLength": 1 },
+          "format": { "type": "string", "enum": ["currency", "percent", "number"] },
+          "explain": { "type": "string", "minLength": 12 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["title", "url"],
+        "properties": {
+          "title": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "scenario": {
+      "type": "object",
+      "required": ["label", "inputs"],
+      "properties": {
+        "label": { "type": "string" },
+        "inputs": {
+          "type": "object",
+          "additionalProperties": { "type": "number" }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

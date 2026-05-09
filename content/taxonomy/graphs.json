@@ -1,0 +1,20 @@
+{
+  "root": "ai",
+  "graphs": {
+    "ai": {
+      "center": "ai",
+      "nodes": ["ai", "ai-hardware", "data-center-power", "ai-software"],
+      "edges": [["ai", "ai-hardware"], ["ai", "data-center-power"], ["ai", "ai-software"]]
+    },
+    "ai-hardware": {
+      "center": "ai-hardware",
+      "nodes": ["ai-hardware", "advanced-packaging", "tsmc"],
+      "edges": [["ai-hardware", "advanced-packaging"], ["advanced-packaging", "tsmc"]]
+    },
+    "advanced-packaging": {
+      "center": "advanced-packaging",
+      "nodes": ["advanced-packaging", "tsmc"],
+      "edges": [["advanced-packaging", "tsmc"]]
+    }
+  }
+}

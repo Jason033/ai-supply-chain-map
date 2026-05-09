@@ -1,0 +1,12 @@
+{
+  "version_date": "2026-03-31",
+  "changed_by": "agent",
+  "status_from": "observe",
+  "status_to": "wait_for_price",
+  "score_changes": {
+    "financial_conversion": { "from": 4, "to": 5 },
+    "valuation_setup": { "from": 3, "to": 2 }
+  },
+  "main_reason": "AI 財務轉換更清楚，但市場估值也更充分反映高成長。",
+  "sources_added": ["TSMC investor relations"]
+}

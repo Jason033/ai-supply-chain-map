@@ -1,0 +1,67 @@
+{
+  "model_id": "tsmc-ai-demand",
+  "template": "advanced_packaging_capacity",
+  "data_as_of": "2026-Q1",
+  "confidence": "medium",
+  "scenarios": {
+    "bear": {
+      "label": "保守",
+      "inputs": {
+        "ai_accelerator_spend": 50000000000,
+        "foundry_and_packaging_share": 0.18,
+        "company_share": 0.55,
+        "company_revenue": 85000000000
+      }
+    },
+    "base": {
+      "label": "中性",
+      "inputs": {
+        "ai_accelerator_spend": 70000000000,
+        "foundry_and_packaging_share": 0.22,
+        "company_share": 0.6,
+        "company_revenue": 85000000000
+      }
+    },
+    "bull": {
+      "label": "樂觀",
+      "inputs": {
+        "ai_accelerator_spend": 95000000000,
+        "foundry_and_packaging_share": 0.26,
+        "company_share": 0.65,
+        "company_revenue": 85000000000
+      }
+    }
+  },
+  "sources": [
+    {
+      "title": "TSMC investor relations",
+      "url": "https://investor.tsmc.com/english"
+    }
+  ],
+  "steps": [
+    {
+      "label": "AI 加速器支出",
+      "value_key": "ai_accelerator_spend",
+      "format": "currency",
+      "explain": "這是需求源頭，代表市場花多少錢購買 GPU 或 ASIC 等 AI 加速器。"
+    },
+    {
+      "label": "流向代工與封裝的比例",
+      "value_key": "foundry_and_packaging_share",
+      "format": "percent",
+      "explain": "AI 加速器支出不會全部變成台積電收入，這個比例粗估其中可能流向晶圓代工與先進封裝的部分。"
+    },
+    {
+      "label": "公司供應占比",
+      "value_key": "company_share",
+      "format": "percent",
+      "explain": "這是公司可能拿到的份額。份額越高，AI 硬體需求越容易轉成公司訂單。"
+    },
+    {
+      "label": "公司目前營收",
+      "value_key": "company_revenue",
+      "format": "currency",
+      "explain": "用來判斷新增需求相對於公司規模是小加分、中等影響，還是足以改變成長曲線。"
+    }
+  ]
+}

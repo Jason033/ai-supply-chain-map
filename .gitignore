@@ -1,0 +1,11 @@
+node_modules/
+dist/
+coverage/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.local
+public/site-data.json
+test-results/
+playwright-report/
